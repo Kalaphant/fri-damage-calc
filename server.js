@@ -1,6 +1,6 @@
 const express = require("express");
 const calc = require("calc");
-const path = require("path"); // This is only needed if serving static files from 'dist'
+const path = require("path");
 const app = express();
 
 app.listen(3000, () => {
@@ -12,9 +12,8 @@ app.use(express.json());
 
 // Handle GET request to the root URL
 app.get("/", (req, res) => {
-    res.send("Welcome to the Pokémon Damage Calculator API!"); 
-    // Alternatively, if you have a frontend, you can serve an index.html file:
-    // res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    res.send("Pokémon Damage Calculator is up and running!");
+    // res.sendFile(path.join(__dirname, 'dist', 'index.html')); // If serving a file
 });
 
 // Existing route to handle calculation
@@ -40,3 +39,7 @@ app.get("/calculate", (req, res, next) => {
 // Serve static files from 'dist' directory
 app.use(express.static('dist'));
 
+// Test Route
+app.get("/test", (req, res) => {
+    res.send("Test route is working!");
+});
